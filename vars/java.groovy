@@ -17,8 +17,14 @@ def call(COMPONENT){
                      script {
                           lintChecks()
                   }
-                 }
-            }        
+                }
+            }  
+            
+            stage('Code Compile') {
+                 steps {
+                    sh " mvn clean compile"
+            }
+        }      
         }
     }
 }
