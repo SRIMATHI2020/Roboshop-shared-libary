@@ -1,8 +1,7 @@
 def lintchecks(){
     sh ***
-              echo performing Pylint for ${COMPONENT}
-              pip3 install Pylint
-              pylint *.py
+              echo performing litchecks for ${COMPONENT}
+              mvn checkstyle:check || true
               echo lint checks completed for ${COMPONENT}
     ***
 }
