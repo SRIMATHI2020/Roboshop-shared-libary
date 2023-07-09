@@ -5,10 +5,8 @@ def lintchecks(){
 }
 
 def sonarchecks(){
-    sh ***
-              echo Sonarchecks inprogress
-              sonar-scanner -Dsonar.sources=. -Dsonar.login=eacdbac316054f3dfbf3f2aefd07060ba5018aa5 -Dsonar.host.url=http://172.31.84.15:9000 -Dsonar.projectKey=${COMPONENT}
-    ***
+    sh "echo Sonarchecks inprogress"
+    sh "sonar-scanner -Dsonar.sources=. -Dsonar.login=eacdbac316054f3dfbf3f2aefd07060ba5018aa5 -Dsonar.host.url=http://172.31.84.15:9000 -Dsonar.projectKey=${COMPONENT}"
 }
 
 
