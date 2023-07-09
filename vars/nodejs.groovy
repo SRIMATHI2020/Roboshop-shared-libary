@@ -12,36 +12,37 @@ def sonarchecks(){
 }
 
 
-def call(){
+def call(COMPONENT){
     pipeline {
-    agent { label 'WS' }
-    stages {
+        agent { label 'WS' }
+        
+        stages {
 
-        stage('Lint Checks') {
-            steps {
-                   script {
-                       lintChecks()
+             stage('Lint Checks') {
+                 steps {
+                     script {
+                          lintChecks()
                   }
             }         /////
         }
         
-        stage ('Code Compile') {
-            steps {
-                sh "npm install"
+             stage('Code Compile') {
+                 steps {
+                    sh "npm install"
             }
         }
 
-        stage ('Sonar Checks') {
-            steps{
-                script {
-                    sonarChecks()
+             stage ('Sonar Checks') {
+                  steps{
+                     script {
+                          sonarChecks()
                 }
             }
         }
 
-        stage ('Testing') {
-            steps{
-                sh "echo Testing in-progress"
+             stage ('Testing') {
+                 steps{
+                     sh "echo Testing in-progress"
                 }
             }
         }
