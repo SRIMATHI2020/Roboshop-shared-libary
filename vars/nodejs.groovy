@@ -12,7 +12,7 @@ def sonarchecks(){
 
 def call(){
     pipeline {
-    agent { label 'WS' }
+    agent { label 'ws' }
     stages {
 
         stage('Lint Checks') {
