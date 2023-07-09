@@ -33,10 +33,17 @@ def call(){
             }
         }
 
-        stage ('sonar checks') {
+        stage ('Sonar Checks') {
             steps{
                 script {
                     sonarChecks()
+                }
+            }
+        }
+
+        stage ('Testing') {
+            steps{
+                sh "echo Testing in-progress"
                 }
             }
         }
