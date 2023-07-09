@@ -1,6 +1,6 @@
 def lintchecks(){
     sh ***
-              echo Installing Jslint
+              echo Installing Jslint for ${Component}
               npm i jslint
               node_modules/jslint/bin/jslint.js server.js || true
     ***
@@ -8,27 +8,27 @@ def lintchecks(){
 
 def sonarchecks(){
     sh ***
-              echo sonarchecks inprogress
-              npm i jslint
+              echo Sonarchecks inprogress
               sonar-scanner -Dsonar.sources=. -Dsonar.login=eacdbac316054f3dfbf3f2aefd07060ba5018aa5 -Dsonar.host.url=http://172.31.84.15:9000 -Dsonar.projectKey=${COMPONENT}
-
-              node_modules/jslint/bin/jslint.js server.js || true
     ***
 }
+
+
 def call(){
     pipeline {
     agent { label 'WS' }
-    stages {           ///
+    stages {
+
         stage('Lint Checks') {
             steps {
                    script {
-                       nodejs.lintchecks()
+                       lintChecks()
                   }
             }         /////
         }
         
         stage ('Code Compile') {
-            steps{
+            steps {
                 sh "npm install"
             }
         }
@@ -49,4 +49,4 @@ def call(){
         }
     }
 }
-}
+
