@@ -8,14 +8,17 @@ def sonarchecks(){
     sh "echo Sonarchecks inprogress"
     sh "sonar-scanner -Dsonar.sources=. -Dsonar.login=eacdbac316054f3dfbf3f2aefd07060ba5018aa5 -Dsonar.host.url=http://172.31.84.15:9000 -Dsonar.projectKey=${COMPONENT} "
     sh "curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate > sonar-quality-gate.sh "
-    sh "sonar-quality-gate.sh admin password 172.31.84.15 ${COMPONENT} "
+    sh "sonar-quality-gate.sh ${SONARCRED_USR} ${SONARCRED_PSW} ${SONARURL} ${COMPONENT} "
 }
 
 
 def call(COMPONENT){
     pipeline {
         agent { label 'WS' }
-        
+        environment {
+            SONARCRED = credentials('SONARCRED')
+            SONARURL = "172.31.84.15"
+        }
         stages {
 
              stage('Lint Checks') {
