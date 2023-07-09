@@ -61,7 +61,18 @@ def call(COMPONENT){
                            sh "echo Functional Testing started"
                            sh "echo Functional testing completed"
                         }
-            }
+                    }
+                    stage('Prepare Artifacts') {
+                        steps{
+                           sh "echo preparing artifacts"
+                        }
+                    }
+                    stage('Upload Artifacts') {
+                        steps{
+                           sh "echo Uploading artifacts"
+                        }
+                    }
+
         }
     }
 }
