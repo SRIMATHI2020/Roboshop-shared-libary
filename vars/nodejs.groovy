@@ -1,9 +1,7 @@
 def lintchecks(){
-    sh ***
-              echo Installing Jslint for ${Component}
-              npm i jslint
-              node_modules/jslint/bin/jslint.js server.js || true
-    ***
+    sh "echo Installing Jslint for ${Component}"
+        npm i jslint
+        node_modules/jslint/bin/jslint.js server.js || true
 }
 
 def sonarchecks(){
