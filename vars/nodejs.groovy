@@ -76,5 +76,6 @@ def call(COMPONENT){
         }
     }
 }
-
         }
+    }
+}
