@@ -64,11 +64,13 @@ def call(COMPONENT){
                         }
                     }
                     stage('Prepare Artifacts') {
+                         when { expression { env.TAG_NAME != null }}
                         steps{
                            sh "echo preparing artifacts"
                         }
                     }
                     stage('Upload Artifacts') {
+                        when { expression { env.TAG_NAME != null }}
                         steps{
                            sh "echo Uploading artifacts"
                         }
