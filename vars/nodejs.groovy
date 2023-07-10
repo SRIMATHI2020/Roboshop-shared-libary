@@ -43,13 +43,14 @@ def call(COMPONENT){
             }
         }
 
-             stage ('Test Cases') {
+             stages ('Test Cases') {
                  parallel {
                     stage('Unit testing') {
                         steps{
                            sh "echo Unit Testing started"
                            sh "echo Unit testing completed"
                         }
+                    }
                     stage('Integration testing') {
                         steps{
                            sh "echo Integration Testing started"
@@ -78,4 +79,3 @@ def call(COMPONENT){
 }
         }
     }
-}
